@@ -1,3 +1,31 @@
+url: "https://kai-stats.github.io"
 theme: jekyll-theme-minimal
 title: Kai’s Site
 description: Bookmark this to follow my latest projects!
+
+title: Kai Stats
+description: Exploring sustainability, intelligence, and the beauty of structure.
+url: "https://kai-stats.github.io"
+baseurl: ""  # サブディレクトリ無しなら空でOK
+
+theme: jekyll-theme-minimal
+logo: /assets/img/logo.png   # 任意。ロゴ置かないならこの行は消してOK
+show_downloads: false
+markdown: kramdown
+highlighter: rouge
+
+# SEO & メタ
+plugins:
+  - jekyll-seo-tag
+
+# ナビ（Minimalは固定ナビがないので、indexで自前ナビを描画します）
+nav:
+  - title: About
+    url: /about
+  - title: Projects
+    url: /projects
+  - title: Blog
+    url: /blog/
+  - title: Contact
+    url: mailto:hello@kai-stats.dev  # お好みで変更
+
