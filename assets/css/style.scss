@@ -1,0 +1,66 @@
+---
+# Jekyllに処理させるためのフロントマター（中身は空でOK）
+---
+
+@import "{{ site.theme }}";
+
+/* Webフォント */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --fg: #0b0f14;
+  --muted: #5b6773;
+  --accent: #0a7cff;    /* 静かなブルー */
+  --bg: #ffffff;
+  --card: #f6f8fa;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+  letter-spacing: 0.1px;
+}
+
+.site-title, h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+code, pre, .code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ナビ */
+.nav {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  margin: 1rem 0 2rem;
+}
+.nav a {
+  padding: .45rem .8rem; border-radius: 10px; background: var(--card);
+}
+.nav a:hover {
+  background: #eaf2ff; text-decoration: none;
+}
+
+/* セクションカード */
+.section {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+/* フッター */
+.site-footer {
+  color: var(--muted);
+  font-size: .95rem;
+  border-top: 1px solid #e6e8eb;
+  margin-top: 2rem; padding-top: 1rem;
+}
