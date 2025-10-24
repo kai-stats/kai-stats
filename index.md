@@ -4,8 +4,8 @@ title: Home
 ---
 
 <section class="hero">
-  <h1>Systems for clarity.</h1>
-  <p>Environmental engineering × statistics × intelligence — clean models, tidy data, and legible structure.</p>
+  <h1>For the sustainable future.</h1>
+  <p>Data science × humanistic insights</p>
   <div class="btns">
     <a class="btn" href="/projects">See Projects</a>
     <a class="btn secondary" href="/blog/">Read Blog</a>
