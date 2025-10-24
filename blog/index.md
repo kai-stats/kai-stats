@@ -9,20 +9,6 @@ title: Home
   {% endfor %}
 </div>
 
-# Kai Stats
-
-<div class="section">
-<p>Building systems at the intersection of <strong>environmental engineering</strong>, <strong>statistics</strong>, and <strong>intelligence</strong>.</p>
-<p>Notes, models, and clean structures — all in one place.</p>
-</div>
-
-## Highlights
-<div class="section">
-- 🧪 <strong>Models</strong>: time-series risk, air-quality analytics, robust baselines  
-- 📚 <strong>Blog</strong>: concise memos on math, structure, and sustainability  
-- 🔬 <strong>Projects</strong>: Kaggle notebooks, env-data pipelines, small ML tools
-</div>
-
 ## Latest Posts
 <div class="section">
 {% assign posts = site.posts | slice: 0, 3 %}
