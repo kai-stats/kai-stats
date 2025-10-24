@@ -4,7 +4,7 @@ title: Home
 ---
 
 <section class="hero">
-  <h1>For the sustainable future.</h1>
+  <h1>Kai’s Autodemia</h1>
   <p>Data science × humanistic insights</p>
   <div class="btns">
     <a class="btn" href="/projects">See Projects</a>
