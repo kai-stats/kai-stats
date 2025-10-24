@@ -40,15 +40,6 @@ title: Home
 </section>
 -->
 
-<section class="section">
-  <h3>Highlights</h3>
-  <ul>
-    <li>Models: AQI/PM2.5 baselines, risk-aware time series</li>
-    <li>Notes: short memos on math, structure, sustainability</li>
-    <li>Toolkit: env-data utils, reproducible pipelines</li>
-  </ul>
-</section>
-
 <div class="site-footer">
   © {{ site.time | date: "%Y" }} Kai Stats — Minimal systems, maximum clarity.
 </div>
