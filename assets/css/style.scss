@@ -2,151 +2,92 @@
 ---
 @import "{{ site.theme }}";
 
-/* ================================
-   Kai Stats — Advanced Minimal UI
-   ================================ */
+/* ===== Simple, Demo-first Layout ===== */
 
-:root {
-  --bg: #ffffff;
-  --fg: #0b0f14;
-  --muted: #5b6773;
-  --accent: #0a7cff;
-  --card: rgba(246, 248, 250, 0.85);
-  --shadow: 0 10px 30px rgba(0,0,0,.06);
-  --radius: 16px;
-}
-
-html.theme-dark {
-  --bg: #0b0f14;
-  --fg: #e6e9ef;
-  --muted: #9aa6b2;
-  --accent: #66aaff;
-  --card: rgba(18, 24, 31, 0.65);
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  transition: background .3s ease, color .3s ease;
-}
-
-/* 2カラム→1カラム化 */
+/* 2カラム解除 → 1カラム中央寄せ */
 header, section { float: none !important; width: 100% !important; }
 section { clear: both; }
-.wrapper { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.wrapper { max-width: 980px; margin: 0 auto; padding: 2rem 1rem 3rem; }
 
-/* 既定のヘッダ表示を抑制して自前ヒーローに任せる */
-header h1.site-title,
-header p.site-description,
-header .view { display: none !important; }
-
-/* ===== Sticky Nav (ガラス) ===== */
-.kai-nav {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: saturate(140%) blur(10px);
-  background: linear-gradient( to bottom, rgba(255,255,255,.7), rgba(255,255,255,.4) );
-  border: 1px solid rgba(120,130,150,.12);
-  padding: .6rem .9rem; border-radius: 14px; margin: .75rem auto 1.25rem;
-  display: flex; align-items: center; gap: .6rem; justify-content: space-between;
-  box-shadow: var(--shadow);
-}
-html.theme-dark .kai-nav {
-  background: linear-gradient( to bottom, rgba(18,24,31,.7), rgba(18,24,31,.4) );
-  border-color: rgba(255,255,255,.06);
-}
-.kai-brand {
-  font-weight: 700;
+/* 見出しと説明を中央寄せ（headerは表示のまま） */
+header h1.site-title {
+  text-align: center;
+  font-weight: 800;
   letter-spacing: .2px;
-  background: linear-gradient(90deg,#0a7cff, #00c2ff 60%, #00e5a8);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
+  margin-bottom: .25rem;
 }
-.kai-links { display:flex; gap:.5rem; flex-wrap:wrap; }
-.kai-chip {
-  padding: .38rem .70rem;
-  border-radius: 999px;
-  background: var(--card);
-  border: 1px solid rgba(120,130,150,.12);
-  text-decoration: none;
-  color: var(--fg);
-  font-size: .95rem;
+header p.site-description {
+  text-align: center;
+  color: #5b6773;
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
 }
-.kai-chip:hover { transform: translateY(-1px); transition: transform .15s ease; text-decoration:none; }
 
-/* ===== Hero ===== */
+/* 本文の基本 */
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+  color: #0b0f14;
+  line-height: 1.65;
+}
+a { color: #0a7cff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ヒーローは最小限に（重なり対策の余白も） */
 .hero {
-  margin: 1.25rem 0 1.5rem;
-  padding: 2.2rem 1.25rem;
-  border-radius: var(--radius);
-  background:
-    radial-gradient(1200px 400px at 10% -10%, rgba(10,124,255,.12), transparent 60%),
-    radial-gradient(900px 300px at 90% -20%, rgba(0,229,168,.10), transparent 60%),
-    var(--card);
-  border: 1px solid rgba(120,130,150,.12);
-  box-shadow: var(--shadow);
+  margin: 0 auto 1.25rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: 14px;
+  background: #0f172a0d; /* 薄い背景 */
+  border: 1px solid #e5e7eb;
 }
 .hero h1 {
   margin: 0 0 .4rem;
-  font-size: clamp(2.0rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: .2px;
-  background: linear-gradient(90deg,#0a7cff, #00c2ff 60%, #00e5a8);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.hero p { margin: 0; color: var(--muted); font-size: 1.1rem; max-width: 70ch; }
+.hero p { margin: 0; color: #475569; max-width: 70ch; }
 
-/* ===== Buttons ===== */
-.kai-btns { margin-top: 1rem; display:flex; gap:.6rem; flex-wrap:wrap; }
-.kai-btn {
-  display:inline-block; padding:.65rem .95rem; border-radius:12px;
-  background: var(--fg); color: var(--bg); text-decoration:none; font-weight:600;
+/* ボタン（最小限） */
+.btns { margin-top: .9rem; display: flex; gap: .6rem; flex-wrap: wrap; }
+.btn {
+  display:inline-block; padding:.62rem .9rem; border-radius:10px;
+  background:#0b0f14; color:#fff; text-decoration:none; font-weight:600;
 }
-.kai-btn.secondary {
-  background: transparent; color: var(--fg);
-  border:1px solid rgba(120,130,150,.2);
+.btn.secondary {
+  background: transparent; color:#0b0f14; border:1px solid #cbd5e1;
 }
 
-/* ===== Cards / Grid ===== */
-.grid { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 1rem; }
-.card {
-  background: var(--card);
-  border: 1px solid rgba(120,130,150,.12);
-  border-radius: var(--radius);
-  padding: 1rem 1.1rem;
-  box-shadow: var(--shadow);
-  transition: transform .15s ease, border-color .2s ease;
+/* ===== Demo 영역（最重要） ===== */
+.demo {
+  margin: 1rem 0 1.5rem;
+  background: #0f172a08;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1rem;
 }
-.card:hover { transform: translateY(-2px); border-color: rgba(10,124,255,.25); }
+.demo > * { width: 100%; display: block; }
 
-/* ===== Posts list ===== */
-.post-list ul { margin: 0; padding-left: 1.1rem; }
-.post-list li { margin:.3rem 0; }
+/* 画像 or 動画 */
+.demo img, .demo video { border-radius: 12px; }
 
-/* ===== Links / Code ===== */
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-pre, code { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-pre { padding: 1rem; border-radius: 12px; background: rgba(16,22,30,.7); color:#e6e9ef; overflow:auto; }
-
-/* ===== Footer ===== */
-.site-footer { text-align:center; color: var(--muted); margin-top:2rem; font-size:.95rem; }
-
-/* ===== Theme Toggle (右上) ===== */
-.theme-toggle {
-  margin-left: auto;
-  border: 1px solid rgba(120,130,150,.2);
-  background: var(--card);
-  border-radius: 999px;
-  padding: .4rem .7rem;
-  cursor: pointer;
-  font-size: .95rem;
+/* 埋め込み（iframe：YouTube/Plotly等） */
+.embed {
+  position: relative; width: 100%;
+  aspect-ratio: 16/9;  /* 必要に応じて変更 */
+  background: #00000010; border-radius: 12px; overflow: hidden;
 }
+.embed iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+}
+
+/* セクションカード（任意） */
+.section {
+  background: #0f172a08; border: 1px solid #e5e7eb;
+  border-radius: 14px; padding: 1rem 1.25rem; margin: 1rem 0;
+}
+
+/* フッター */
+.site-footer { text-align:center; color:#64748b; margin-top:2rem; font-size:.95rem; }
+
 
 
