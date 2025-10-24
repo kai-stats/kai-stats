@@ -2,139 +2,90 @@
 ---
 @import "{{ site.theme }}";
 
-/* ========== Simple / Demo-first / Slim Sticky Topbar ========== */
+/* ========== Slim Fixed Topbar + No Overlap ========== */
 
-/* 2カラム解除 → 1カラム */
+/* テーマの2カラムを無効化して1カラム */
 header, section { float: none !important; width: 100% !important; }
 section { clear: both; }
 
-/* ---- Slim Sticky Topbar (Kai Stats) ---- */
-header {
-  position: fixed;     
+/* トップバー高さ（必要なら数値だけ変える） */
+:root { --topbar-h: 56px; }
+
+/* --- 固定ヘッダー（タスクバー風） --- */
+header{
+  position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 0.35rem 1rem;   /* 高さを抑えてスリム化 */
+  display: flex; align-items: center;
+  gap: 12px;
+  min-height: var(--topbar-h);         /* ← 高さはここで統一 */
+  padding: 0 .9rem;
+  background: rgba(255,255,255,0.85);
   backdrop-filter: saturate(140%) blur(10px);
-  background: rgba(255,255,255,0.85);  /* 半透明で未来的に */
   border-bottom: 1px solid #e5e7eb;
 }
 
-header h1.site-title {
+/* タイトルだけ残して細め表示 */
+header h1, header h1.site-title{
   margin: 0;
   font-weight: 700;
-  font-size: 1rem;     /* 小さく控えめなタイトル */
+  font-size: 1rem;
   line-height: 1.2;
 }
-header h1.site-title a {
-  text-decoration: none;
-  color: #0b0f14;
+header h1 a, header h1.site-title a{
+  color: #0b0f14; text-decoration: none;
 }
 
-/* 説明とGitHubリンクは非表示でクリーンに */
-header p.site-description,
+/* 説明文や「View My GitHub Profile」を確実に非表示 */
+header p,
+header .site-description,
 header .view { display: none !important; }
 
-/* コンテンツがバーの下に隠れないよう余白 */
-body { 
+/* --- コンテンツがヘッダーの下に潜らないように余白を確保 --- */
+html, body { margin: 0; padding: 0; }
+body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
-  color: #0b0f14;
-  line-height: 1.65;
-  padding-top: 48px;   /* 固定バー高さぶん */
+  color: #0b0f14; line-height: 1.65;
+  padding-top: var(--topbar-h);        /* ← ここが効かないと被ります */
 }
 
-.wrapper {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 1rem 3rem;
-}
+/* ラッパー */
+.wrapper{ max-width: 980px; margin: 0 auto; padding: 0 1rem 3rem; }
 
-a { color: #0a7cff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a{ color:#0a7cff; text-decoration:none; }
+a:hover{ text-decoration:underline; }
 
-/* ---- Hero ---- */
-.hero {
-  margin: 0 auto 1.25rem;
+/* --- ヒーロー（見出しのかぶり回避） --- */
+.hero{
+  margin: .75rem auto 1.25rem;         /* ← 上に少し余白を追加 */
   padding: 1.5rem 1.25rem;
   border-radius: 14px;
   background: #f7f8fa;
   border: 1px solid #e5e7eb;
 }
-.hero h1 {
+.hero h1{
   margin: 0 0 .4rem;
   font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 800;
   line-height: 1.2;
 }
-.hero p {
-  margin: 0;
-  color: #475569;
-  max-width: 70ch;
-}
+.hero p{ margin:0; color:#475569; max-width:70ch; }
 
-/* ---- Buttons ---- */
-.btns {
-  margin-top: .9rem;
-  display: flex;
-  gap: .6rem;
-  flex-wrap: wrap;
-}
-.btn {
-  display:inline-block;
-  padding:.62rem .9rem;
-  border-radius:10px;
-  background:#0b0f14;
-  color:#fff;
-  font-weight:600;
-}
-.btn.secondary {
-  background: transparent;
-  color:#0b0f14;
-  border:1px solid #cbd5e1;
-}
+/* ボタン */
+.btns{ margin-top:.9rem; display:flex; gap:.6rem; flex-wrap:wrap; }
+.btn{ display:inline-block; padding:.62rem .9rem; border-radius:10px; background:#0b0f14; color:#fff; font-weight:600; }
+.btn.secondary{ background:transparent; color:#0b0f14; border:1px solid #cbd5e1; }
 
-/* ---- Demo block ---- */
-.demo {
-  margin: 1rem 0 1.5rem;
-  background: #f7f8fa;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 1rem;
+/* デモ領域 */
+.demo{
+  margin:1rem 0 1.5rem; background:#f7f8fa; border:1px solid #e5e7eb;
+  border-radius:14px; padding:1rem;
 }
-.demo img, .demo video {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-}
-.embed {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #00000010;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.embed iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+.demo img, .demo video{ width:100%; display:block; border-radius:12px; }
+.embed{ position:relative; width:100%; aspect-ratio:16/9; background:#00000010; border-radius:12px; overflow:hidden; }
+.embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-/* ---- Section Card ---- */
-.section {
-  background: #f7f8fa;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 1rem 1.25rem;
-  margin: 1rem 0;
-}
-
-/* ---- Footer ---- */
-.site-footer {
-  text-align: center;
-  color: #64748b;
-  margin-top: 2rem;
-  font-size: .95rem;
-}
+/* セクション / フッター */
+.section{ background:#f7f8fa; border:1px solid #e5e7eb; border-radius:14px; padding:1rem 1.25rem; margin:1rem 0; }
+.site-footer{ text-align:center; color:#64748b; margin-top:2rem; font-size:.95rem; }
 
