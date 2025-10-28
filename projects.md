@@ -6,6 +6,6 @@ permalink: /projects
 
 # Projects
 
-- **Air Quality Mini-Pipeline** — ETL + basic forecasting (AQI/PM2.5)  
-- **Risk-Aware Time Series** — simple, well-commented baselines  
-- **Env-Data Utils** — tiny Python helpers for tidy data
+- **Space Ballon Project** —  Highschool Curiosity Sparker.
+- **Lunar Eclipse Observation Circle** — An educational activity for my juniors in my alma mater. 
+- **Machine Learning | Solar Panel Power Generation Capcity Assesement** — Using Machine Learning to predict the power generation capacity of the solar panels.
