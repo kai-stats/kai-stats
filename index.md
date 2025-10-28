@@ -41,5 +41,5 @@ title: Home
 -->
 
 <div class="site-footer">
-  © {{ site.time | date: "%Y" }} Kai Stats — Minimal systems, maximum clarity.
+  © {{ site.time | date: "%Y" }} Kai Stats
 </div>
