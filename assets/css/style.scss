@@ -1,138 +1,125 @@
 ---
 ---
 @import "{{ site.theme }}";
-/* ピクセル調フォント */
+/* ピクセル系フォント */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* ========== Slim Fixed Topbar + No Overlap ========== */
+/* ============================
+   FULL PIXEL MODE (site-wide)
+   ============================ */
+
+/* テーマの2カラム無効化 */
 header, section { float: none !important; width: 100% !important; }
 section { clear: both; }
+
+/* トップバー高（必要なら変更） */
 :root { --topbar-h: 56px; }
 
-header{
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; gap: 12px;
-  min-height: var(--topbar-h);
-  padding: 0 .9rem;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid #e5e7eb;
-}
-header h1, header h1.site-title{ margin:0; font-weight:700; font-size:1rem; line-height:1.2; }
-header h1 a, header h1.site-title a{ color:#0b0f14; text-decoration:none; }
-header p, header .site-description, header .view { display:none !important; }
-
-html, body { margin:0; padding:0; }
-body{
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
-  color:#0b0f14; line-height:1.65;
-  padding-top: var(--topbar-h);
-}
-
-.wrapper{ max-width:980px; margin:0 auto; padding:0 1rem 3rem; }
-a{ color:#0a7cff; text-decoration:none; } a:hover{ text-decoration:underline; }
-
-.hero{
-  margin:.75rem auto 1.25rem; padding:1.5rem 1.25rem;
-  border-radius:14px; background:#f7f8fa; border:1px solid #e5e7eb;
-}
-.hero h1{ margin:0 0 .4rem; font-size:clamp(1.9rem,4vw,2.6rem); font-weight:800; line-height:1.2; }
-.hero p{ margin:0; color:#475569; max-width:70ch; }
-
-.btns{ margin-top:.9rem; display:flex; gap:.6rem; flex-wrap:wrap; }
-.btn{ display:inline-block; padding:.62rem .9rem; border-radius:10px; background:#0b0f14; color:#fff; font-weight:600; }
-.btn.secondary{ background:transparent; color:#0b0f14; border:1px solid #cbd5e1; }
-
-.demo{ margin:1rem 0 1.5rem; background:#f7f8fa; border:1px solid #e5e7eb; border-radius:14px; padding:1rem; }
-.demo img, .demo video{ width:100%; display:block; border-radius:12px; }
-.embed{ position:relative; width:100%; aspect-ratio:16/9; background:#00000010; border-radius:12px; overflow:hidden; }
-.embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-
-.section{ background:#f7f8fa; border:1px solid #e5e7eb; border-radius:14px; padding:1rem 1.25rem; margin:1rem 0; }
-.site-footer{ text-align:center; color:#64748b; margin-top:2rem; font-size:.95rem; }
-
-/* ========== Pixel Mode (Minecraft-ish dots) ========== */
-/* トグルで <html class="pixel"> が付いたら有効に */
-html.pixel body{
-  /* ドット背景（斜交差2レイヤーで“ぎっしり”感） */
+/* --- 背景を全ページでドットに（htmlに付けると全域に効く） --- */
+html {
   background-image:
     radial-gradient(#d7dde6 1px, transparent 1px),
     radial-gradient(#d7dde6 1px, transparent 1px);
-  background-size: 12px 12px, 12px 12px;
+  background-size: 12px 12px, 12px 12px;  /* 間隔：大きくしたい→ 16px などに */
   background-position: 0 0, 6px 6px;
+  background-attachment: fixed;           /* スクロールしても固定 */
 }
 
-/* 見出しをピクセル風フォントに */
-html.pixel .hero h1, html.pixel header h1{
-  font-family: 'Press Start 2P', system-ui, sans-serif;
-  letter-spacing: .5px;
-  font-weight: 400; /* このフォントは太字が重いので軽く */
+/* --- 文字を全てピクセルフォントに --- */
+body, button, input, select, textarea, code, pre, kbd, samp,
+h1, h2, h3, h4, h5, h6, a, p, li, small, strong, em {
+  font-family: 'Press Start 2P', system-ui, sans-serif !important;
+  font-weight: 400;
+  letter-spacing: .4px;
 }
 
-/* 角をカクッと（ピクセル感） */
-html.pixel .hero,
-html.pixel .demo,
-html.pixel .section,
-html.pixel .btn { border-radius: 0; }
-
-/* ボタンもレトロに */
-html.pixel .btn{
-  box-shadow: 0 0 0 2px #000 inset, 2px 2px 0 0 #0003;
+/* ベース整形 */
+html, body { margin: 0; padding: 0; }
+body{
+  line-height: 1.6;
+  color: #0b0f14;
+  padding-top: var(--topbar-h); /* 固定ヘッダー分の余白 */
 }
 
-/* 画像は粗めに拡大表示したときの雰囲気に */
-html.pixel img, html.pixel canvas{ image-rendering: pixelated; }
-
-/* 右上フローティングの Pixelトグル */
-.pixel-toggle{
-  position: fixed;
-  top: calc(var(--topbar-h) + 8px);
-  right: 12px;
-  z-index: 1200;
-  font: 12px/1 'Press Start 2P', system-ui, sans-serif;
-  padding: .55rem .7rem;
-  border: 1px solid #cbd5e1;
-  background: #fff; color:#0b0f14;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* ===== Pixel / Dot style (Minecraft-ish) ===== */
-
-/* ピクセル調フォント（見出し用） */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-/* ドット背景（2レイヤーで斜交差させて“詰まった”感じに） */
-body {
-  background-image:
-    radial-gradient(#d7dde6 1px, transparent 1px),
-    radial-gradient(#d7dde6 1px, transparent 1px);
-  background-size: 12px 12px, 12px 12px;  /* ドットの間隔（大きくしたい→ 16px などに） */
-  background-position: 0 0, 6px 6px;      /* 2レイヤーを半ピッチずらす */
-}
-
-/* 見出しをピクセル風フォントに */
-.hero h1 {
-  font-family: 'Press Start 2P', system-ui, sans-serif;
-  font-weight: 400;            /* このフォントは太字が重いので軽め */
-  letter-spacing: .5px;
-}
-
-/* 角をカクッとさせて“ピクセル感”を出す */
-.hero,
-.demo,
-.section,
-.btn {
+/* 角をカクっと（主要ブロック＆メディア＆ボタン） */
+.hero, .demo, .section, .card, .post, .site-footer, .btn, pre, code, img, video {
   border-radius: 0 !important;
 }
 
-/* ボタンもレトロ風 */
-.btn {
-  box-shadow: 0 0 0 2px #000 inset, 2px 2px 0 0 #0003;
+/* 画像を拡大してもドット感を保つ */
+img, canvas { image-rendering: pixelated; }
+
+/* --- 固定ヘッダー（タスクバー風・ドット透過） --- */
+header{
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center;
+  min-height: var(--topbar-h);
+  padding: 0 .9rem;
+  background: rgba(255,255,255,.60);       /* 透けてドットが見える */
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 2px solid #0b0f14;
+}
+header h1, header h1.site-title{
+  margin: 0; font-size: 12px; line-height: 1.2; font-weight: 700;
+}
+header h1 a, header h1.site-title a{ color:#0b0f14; text-decoration:none; }
+header p, header .site-description, header .view { display: none !important; }
+
+/* ラッパー */
+.wrapper { max-width: 980px; margin: 0 auto; padding: 0 1rem 3rem; }
+
+/* リンク（レトロ感） */
+a { color: #0b0f14; text-decoration: underline; text-underline-offset: 2px; }
+
+/* --- ヒーロー：背景は透明寄せ（ドットが活きるように） --- */
+.hero{
+  margin: .75rem auto 1.25rem;
+  padding: 1.25rem;
+  border: 2px solid #0b0f14;
+  background: rgba(255,255,255,.85);
+}
+.hero h1{ margin: 0 0 .6rem; font-size: clamp(18px, 4vw, 28px); }
+.hero p { margin: 0; color: #0b0f14; }
+
+/* --- ボタンを“完全ピクセル”に --- */
+.btns { margin-top: .9rem; display: flex; gap: .6rem; flex-wrap: wrap; }
+.btn{
+  display: inline-block;
+  padding: .55rem .8rem;
+  border: 2px solid #0b0f14;
+  background: #ffffff;
+  color: #0b0f14;
+  text-decoration: none;
+  box-shadow: 0 0 0 2px #0b0f14 inset, 3px 3px 0 0 #00000022;
+}
+.btn:hover { transform: translate(-1px, -1px); box-shadow: 0 0 0 2px #0b0f14 inset, 4px 4px 0 0 #00000030; }
+.btn:active { transform: translate(0,0); box-shadow: 0 0 0 2px #0b0f14 inset, 1px 1px 0 0 #00000022; }
+.btn.secondary{
+  background: #f8fafc;
 }
 
-/* 画像の拡大時にドット感を出す（必要なときだけ効く） */
-img, canvas {
-  image-rendering: pixelated;
+/* --- デモ/セクション：背景を薄く、縁はピクセル線 --- */
+.demo, .section{
+  margin: 1rem 0 1.25rem;
+  padding: 1rem;
+  background: rgba(255,255,255,.85);
+  border: 2px solid #0b0f14;
+}
+
+/* コードブロックもピクセル枠に */
+pre {
+  background: #111; color: #e6e6e6;
+  border: 2px solid #0b0f14;
+  padding: 1rem; overflow: auto;
+}
+
+/* フッター */
+.site-footer{
+  text-align: center;
+  color: #0b0f14;
+  background: rgba(255,255,255,.85);
+  border: 2px solid #0b0f14;
+  padding: .8rem 1rem;
+  margin-top: 2rem;
 }
 
