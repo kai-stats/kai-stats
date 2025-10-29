@@ -97,4 +97,42 @@ html.pixel img, html.pixel canvas{ image-rendering: pixelated; }
   cursor: pointer;
 }
 
+/* ===== Pixel / Dot style (Minecraft-ish) ===== */
+
+/* ピクセル調フォント（見出し用） */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ドット背景（2レイヤーで斜交差させて“詰まった”感じに） */
+body {
+  background-image:
+    radial-gradient(#d7dde6 1px, transparent 1px),
+    radial-gradient(#d7dde6 1px, transparent 1px);
+  background-size: 12px 12px, 12px 12px;  /* ドットの間隔（大きくしたい→ 16px などに） */
+  background-position: 0 0, 6px 6px;      /* 2レイヤーを半ピッチずらす */
+}
+
+/* 見出しをピクセル風フォントに */
+.hero h1 {
+  font-family: 'Press Start 2P', system-ui, sans-serif;
+  font-weight: 400;            /* このフォントは太字が重いので軽め */
+  letter-spacing: .5px;
+}
+
+/* 角をカクッとさせて“ピクセル感”を出す */
+.hero,
+.demo,
+.section,
+.btn {
+  border-radius: 0 !important;
+}
+
+/* ボタンもレトロ風 */
+.btn {
+  box-shadow: 0 0 0 2px #000 inset, 2px 2px 0 0 #0003;
+}
+
+/* 画像の拡大時にドット感を出す（必要なときだけ効く） */
+img, canvas {
+  image-rendering: pixelated;
+}
 
